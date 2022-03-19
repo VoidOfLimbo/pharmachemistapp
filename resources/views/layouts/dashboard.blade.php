@@ -13,11 +13,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    {{-- This is tailwing css --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+    {{-- This is livewire css --}}
     @livewireStyles
 
+    {{-- custom css to override above css goes here --}}
+
     <!-- Scripts -->
+    {{-- This is essential js including tailwind that needs to load before contents --}}
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
@@ -25,12 +30,12 @@
     {{-- will be useful to display messages attached with session if requested by client --}}
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen">
         <div class="flex flex-no-wrap h-full">
             <!-- Nav Bar -->
             <x-navigation.sidenav />
 
-            {{-- body  --}}
+            {{-- body --}}
             <div class="md:ml-64 w-full">
 
                 {{-- if there is header put it here --}}
@@ -50,10 +55,13 @@
         </div>
     </div>
 
-    {{-- stack models sent by implementing child pages  --}}
+    {{-- scripts for including highcharts --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    {{-- stack models sent by implementing child pages --}}
     @stack('modals')
 
-    {{-- our local script for navigation in dashboard layout --}}
+    {{-- necessary javascript for navbar in dashboard layout --}}
     <script src="{{ asset('/js/dashboard.js') }}"></script>
 
     {{-- inserting necessary laravel livewire scripts --}}

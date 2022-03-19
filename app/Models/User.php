@@ -72,10 +72,14 @@ class User extends Authenticatable
      */
     protected static function booted()
     {
-        // attach default role to the user when created
-        static::created(function ($user) {
-            if (!$user->roles()->get()->contains(2)) {
-                $user->roles()->attach(2);
+        // attach default role to the user when created for registered users
+        static::created(function ($user)
+        {
+            // check if the user already has default role or not
+            if (!$user->roles()->get()->contains(ROLE::DEFAULT_ROLE)) {
+
+                // if it does not then add the default role to the user
+                $user->roles()->attach(ROLE::DEFAULT_ROLE);
             }
         });
     }

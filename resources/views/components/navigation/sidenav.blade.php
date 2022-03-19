@@ -1,5 +1,5 @@
 {{-- nav menu container --}}
-<div class="w-full h-screen fixed">
+<div class="w-full h-screen fixed" id="sideNav">
 
     {{-- Formatted navigation menu for larger and medium devices --}}
     <x-navigation.sidenavparts.nav-menu>

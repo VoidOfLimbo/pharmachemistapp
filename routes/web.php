@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,11 @@ Route::get('/', function () {
     return view('webpages.welcome');
 })->name('/');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('webpages.dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->controller(ChartController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard');
+    });
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('webpages.dashboard');
+// })->name('dashboard');
