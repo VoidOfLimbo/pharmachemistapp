@@ -15,14 +15,16 @@
 
     <!-- remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
     <div class="w-full h-screen rounded border-dashed border-2 border-gray-300">
-        <!-- Place your content here -->
-        Something
+        <!-- content goes here -->
+        <div>
+            <div ></div>
+        </div>
     </div>
 
-    {{-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            </div>
-        </div>
-    </div> --}}
+    {{-- script for passing data from php to javascript --}}
+    <script> var data = {!! json_encode($thedata->toArray(), JSON_HEX_TAG) !!}; </script>
+
+    {{-- script to actually print chart --}}
+    <script src="{{ asset('/js/piechart.js') }}"></script>
+
 </x-dashboard-layout>
