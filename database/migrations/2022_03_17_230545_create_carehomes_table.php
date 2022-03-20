@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -15,6 +16,10 @@ return new class extends Migration
     {
         Schema::create('carehomes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('status_id')->references('id')->on('statuses');
+            $table->integer('total_patients');
+            $table->integer('week');
             $table->timestamps();
         });
     }

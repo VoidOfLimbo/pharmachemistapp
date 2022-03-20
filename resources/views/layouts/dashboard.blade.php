@@ -20,6 +20,9 @@
     @livewireStyles
 
     {{-- custom css to override above css goes here --}}
+    @if (isset($styles))
+        {{ $styles }}
+    @endif
 
     <!-- Scripts -->
     {{-- This is essential js including tailwind that needs to load before contents --}}
@@ -57,6 +60,11 @@
 
     {{-- scripts for including highcharts --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     {{-- stack models sent by implementing child pages --}}
     @stack('modals')
@@ -64,6 +72,9 @@
     {{-- necessary javascript for navbar in dashboard layout --}}
     <script src="{{ asset('/js/dashboard.js') }}"></script>
 
+    @if (isset($script))
+        {{ $script }}
+    @endif
     {{-- inserting necessary laravel livewire scripts --}}
     @livewireScripts
 

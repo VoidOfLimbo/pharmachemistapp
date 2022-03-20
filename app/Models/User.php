@@ -62,7 +62,7 @@ class User extends Authenticatable
     public function roles()
     {
         // A user can have multiple roles
-        return $this->belongsToMany(Role::class)->as("relation");
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
       /**
@@ -75,9 +75,9 @@ class User extends Authenticatable
         // attach default role to the user when created for registered users
         static::created(function ($user)
         {
-            // check if the user already has default role or not
-            if (!$user->roles()->get()->contains(ROLE::DEFAULT_ROLE)) {
 
+            // if user uses register form they will not have any role and when seeding dev we don`t want to give it guest role
+            if (!$user->roles()->get()->contains(ROLE::DEFAULT_ROLE) && !$user->get('id')->contains(ROLE::SUPER_ADMIN)) {
                 // if it does not then add the default role to the user
                 $user->roles()->attach(ROLE::DEFAULT_ROLE);
             }

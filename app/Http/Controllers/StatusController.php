@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carehome;
-use App\Http\Requests\StoreCarehomeRequest;
-use App\Http\Requests\UpdateCarehomeRequest;
+use App\Models\Status;
+use App\Http\Requests\StoreStatusRequest;
+use App\Http\Requests\UpdateStatusRequest;
 
-class CarehomeController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class CarehomeController extends Controller
      */
     public function index()
     {
-        $carehomes = Carehome::paginate(5);
-
-        return view('webpages.carehomes.index', compact('carehomes'));
+        //
     }
 
     /**
@@ -33,10 +31,10 @@ class CarehomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCarehomeRequest  $request
+     * @param  \App\Http\Requests\StoreStatusRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCarehomeRequest $request)
+    public function store(StoreStatusRequest $request)
     {
         //
     }
@@ -44,10 +42,10 @@ class CarehomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Carehome  $carehome
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function show(Carehome $carehome)
+    public function show(Status $status)
     {
         //
     }
@@ -55,10 +53,10 @@ class CarehomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Carehome  $carehome
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carehome $carehome)
+    public function edit(Status $status)
     {
         //
     }
@@ -66,11 +64,11 @@ class CarehomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCarehomeRequest  $request
-     * @param  \App\Models\Carehome  $carehome
+     * @param  \App\Http\Requests\UpdateStatusRequest  $request
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCarehomeRequest $request, Carehome $carehome)
+    public function update(UpdateStatusRequest $request, Status $status)
     {
         //
     }
@@ -78,10 +76,10 @@ class CarehomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Carehome  $carehome
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carehome $carehome)
+    public function destroy(Status $status)
     {
         //
     }

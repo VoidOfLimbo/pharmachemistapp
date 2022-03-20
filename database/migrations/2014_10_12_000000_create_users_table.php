@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -24,6 +25,12 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        // // Call seeder to inject necessary users
+        // Artisan::call('db:seed', [
+        //     '--class' => 'UserSeeder',
+        //     '--force' => true // <--- add this line so it can run in production too
+        // ]);
     }
 
     /**

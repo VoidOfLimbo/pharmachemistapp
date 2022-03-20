@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarehomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,11 @@ Route::middleware(['auth:sanctum', 'verified'])
         Route::get('/dashboard', 'index')->name('dashboard');
     });
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('webpages.dashboard');
-// })->name('dashboard');
+
+
+    Route::group( ['middleware' => 'auth'], function(){
+        Route::resource('carehomes',CarehomeController::class)->parameters(['' => 'webpages']);
+        Route::resource('users',UserController::class)->parameters(['' => 'webpages']);
+    });
+
+

@@ -11,4 +11,10 @@ class Role extends Model
 
     public const DEFAULT_ROLE = 3;  // GUEST
     public const SUPER_ADMIN = 1;   // DEV
+
+    public function users()
+    {
+        // A user can have multiple roles
+        return $this->belongsToMany(User::class);
+    }
 }

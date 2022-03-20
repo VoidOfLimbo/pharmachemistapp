@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Carehome extends Model
+class Status extends Model
 {
     use HasFactory;
 
-     /**
+      /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'status_id',
+        'status_name',
     ];
 
-    public function status()
+    public function carehome()
     {
-        return $this->belongsTo(Status::class);
+        // A user can have multiple roles
+        return $this->has(Carehome::class);
     }
 }
