@@ -16,12 +16,12 @@ class StatusSeeder extends Seeder
     public function run()
     {
         $carehomeStatus = [
-            'REPEAT_SENT', 'REPEAT_RECEIVED',
-            'PRESCRIPTION_ORDERED', 'PRESCRIPTION_RECEIVED', 'PRESCRIPTION_CHECKED', 'PRESCRIPTION_ENDORSED',
-            'MARCHART_BIODOSED',
-            'MEDICINE_PICKED', 'MEDICINE_PODDED',
-            'BIODOSE_CHECKED', 'BIODOSE_CONFIRMED',
-            'PACKAGE_PACKED', 'PACKAGE_DELIVERED'
+            'REPEAT SENT', 'REPEAT RECEIVED',
+            'PRESCRIPTION ORDERED', 'PRESCRIPTION RECEIVED', 'PRESCRIPTION CHECKED', 'PRESCRIPTION ENDORSED',
+            'MARCHART BIODOSED',
+            'MEDICINE PICKED', 'MEDICINE PODDED',
+            'BIODOSE CHECKED', 'BIODOSE CONFIRMED',
+            'PACKAGE PACKED', 'PACKAGE DELIVERED'
         ];
 
         foreach($carehomeStatus as $status){

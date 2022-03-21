@@ -18,12 +18,12 @@ class RoleSeeder extends Seeder
         $roles = [
             'DEV', 'OWNER',
             'GUEST',
-            'ADMIN_HEAD', 'ADMIN',
-            'SENIOR_DISPENSER', 'DISPENSER',
+            'HEAD ADMIN', 'ADMIN',
+            'SENIOR DISPENSER', 'DISPENSER',
             'PICKER',
             'ENDORSER', 'BIODOSER',
-            'PHARMACIST', 'CHECKER', 'FINAL_CHECKER',
-            'SENIOR_DRIVER', 'DRIVER'
+            'PHARMACIST', 'CHECKER', 'FINAL CHECKER',
+            'SENIOR DRIVER', 'DRIVER'
         ];
 
         foreach($roles as $role){

@@ -18,7 +18,7 @@ class Status extends Model
         'status_name',
     ];
 
-    public function carehome()
+    public function carehomes()
     {
         // A user can have multiple roles
         return $this->has(Carehome::class);
