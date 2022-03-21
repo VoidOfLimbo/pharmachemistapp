@@ -1,4 +1,4 @@
-# Undergraduate Degree Project for B.Sc. Computer Science
+# Undergraduate Degree Project for B.Sc. (Hons.) Computer Science
 
 ## You need to have set-up laravel environment and installed all the dependencies to try this in your PC
 I am working on windows 10 and I have installed XAAMP(php and sql), laravel, composer and node.js
