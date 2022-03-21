@@ -12,10 +12,11 @@ After setting up environment you can follow following steps to install this appl
 4. Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu
 5. Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 6. Run php artisan key:generate
-7. Run php artisan migrate:fresh --seed
-8. Run php artisan serve
-9. Go to http://localhost:8000/ in web browser (I use XAAMP for localhosting and accessing database)
-10. The database can be accessed from http://localhost/phpmyadmin/
+7. npm install && npm run dev [ you need npm installed for this I have it from installing NodeJs ]
+8. Run php artisan migrate:fresh --seed
+9. Run php artisan serve
+10. Go to http://localhost:8000/ in web browser (I use XAAMP for localhosting and accessing database)
+11. The database can be accessed from http://localhost/phpmyadmin/
 
 ## Laravel generated default readme section below
 
