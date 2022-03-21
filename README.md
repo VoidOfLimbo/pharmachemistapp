@@ -1,5 +1,9 @@
-# You need to have set-up laravel environment and installed all the dependencies
-I am working on windows 10 and I have installed XAAMP(php and sql), laravel, composer, node.js and tw-elements 
+# Undergraduate Degree Project for B.Sc. Computer Science
+
+## You need to have set-up laravel environment and installed all the dependencies to try this in your PC
+I am working on windows 10 and I have installed XAAMP(php and sql), laravel, composer and node.js
+I have used tw-elements and you might need to install it in your laravel project for styles to work properly
+I have also made use of highcharts.js to plot piechart and barchart 
 
 After setting up environment you can follow following steps to install this application in your device:
 1. Clone this project
