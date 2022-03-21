@@ -25,7 +25,7 @@ class CarehomeFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name() . ' carehome',
+            'name' => $this->faker->name() . ' Carehome',
             'status_id' => rand(1,13),
             'total_patients' => rand(10,60),
             'week' => rand(1,4),

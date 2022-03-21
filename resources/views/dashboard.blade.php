@@ -1,7 +1,7 @@
 <x-app-layout>
     @livewire('navigation-menu')
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>

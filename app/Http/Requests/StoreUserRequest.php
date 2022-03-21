@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Laravel\Fortify\Rules\Password;
 
 class StoreUserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->user()->can('create', User::class);
     }
 
     /**
@@ -24,7 +25,24 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-        ];
+            'name'     => [
+                'string',
+                'required',
+            ],
+            'email'    => [
+                'required',
+                'unique:users',
+            ],
+            'password' => [
+                new Password,
+            ],
+            'roles.*'  => [
+                'integer',
+            ],
+            'roles'    => [
+                'required',
+                'array',
+            ],
+        ];;
     }
 }

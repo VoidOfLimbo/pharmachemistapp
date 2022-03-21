@@ -17,6 +17,8 @@ class Carehome extends Model
     protected $fillable = [
         'name',
         'status_id',
+        'total_patients',
+        'week',
     ];
 
     public function status()

@@ -10,6 +10,7 @@ class Role extends Model
     use HasFactory;
 
     public const DEFAULT_ROLE = 3;  // GUEST
+    public const OWNER = 2;         // OWNER
     public const SUPER_ADMIN = 1;   // DEV
 
     public function users()

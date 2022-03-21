@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carehome;
 use App\Http\Requests\StoreCarehomeRequest;
 use App\Http\Requests\UpdateCarehomeRequest;
+use App\Models\Status;
 
 class CarehomeController extends Controller
 {
@@ -15,8 +16,9 @@ class CarehomeController extends Controller
      */
     public function index()
     {
-        $carehomes = Carehome::paginate(5);
+        $this->authorize('viewAny', Carehome::class);
 
+        $carehomes = Carehome::paginate(5);
         return view('webpages.carehomes.index', compact('carehomes'));
     }
 
@@ -27,7 +29,11 @@ class CarehomeController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Carehome::class);
+
+        $status = Status::pluck('status_name', 'id');
+        return view('webpages.carehomes.create', compact( 'status'));
+
     }
 
     /**
@@ -38,7 +44,11 @@ class CarehomeController extends Controller
      */
     public function store(StoreCarehomeRequest $request)
     {
-        //
+
+        Carehome::create($request->validated());
+
+        return redirect()->route('carehomes.index');
+
     }
 
     /**
@@ -49,7 +59,9 @@ class CarehomeController extends Controller
      */
     public function show(Carehome $carehome)
     {
-        //
+        $this->authorize('view', $carehome);
+
+        return view('webpages.carehomes.show', compact('carehome'));
     }
 
     /**
@@ -60,7 +72,14 @@ class CarehomeController extends Controller
      */
     public function edit(Carehome $carehome)
     {
-        //
+        $this->authorize('update', $carehome);
+
+        $status = Status::pluck('status_name', 'id');
+        $carehome->load('status');
+
+        return view('webpages.carehomes.edit', compact('carehome', 'status'));
+
+
     }
 
     /**
@@ -72,7 +91,9 @@ class CarehomeController extends Controller
      */
     public function update(UpdateCarehomeRequest $request, Carehome $carehome)
     {
-        //
+        $carehome->update($request->validated());
+
+        return redirect()->route('carehomes.index');
     }
 
     /**
@@ -83,6 +104,9 @@ class CarehomeController extends Controller
      */
     public function destroy(Carehome $carehome)
     {
-        //
+        $this->authorize('delete', $carehome);
+
+        $carehome->delete();
+        return redirect()->route('carehomes.index');
     }
 }

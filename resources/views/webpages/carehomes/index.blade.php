@@ -2,9 +2,9 @@
 
     {{-- dashboard header --}}
     <x-slot name="header">
-        <h2 class="flex justify-between font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="flex justify-between font-semibold text-xl leading-tight">
             <div>
-                {{ __('Dashboard') }}
+                {{ __('Carehome List') }}
             </div>
 
             {{-- controls for user to manage their profiles --}}
@@ -17,7 +17,7 @@
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8">
-                <a href="{{ route('carehomes.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Carehome</a>
+                <a href="{{ route('carehomes.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">{{ __('Add Carehome') }}</a>
             </div>
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,19 +27,19 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" width="50" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        ID
+                                        {{ __('ID') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Name
+                                        {{ __('Name') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Status
+                                        {{ __('Status') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Total Residents
+                                        {{ ('Total Residents') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Week
+                                        {{ __('Week') }}
                                     </th>
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
 
@@ -68,28 +68,25 @@
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {{ $carehome->week }}
-                                            {{-- @foreach ($carehome->rx as $status)
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    {{ $carehome->status()->status_name }}
-                                                </span>
-                                             @endforeach --}}
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <a href="{{ route('carehomes.show', $carehome->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
-                                            <a href="{{ route('carehomes.edit', $carehome->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                            <a href="{{ route('carehomes.show', $carehome->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">{{ __('View') }}</a>
+                                            @if(Auth::user()->can('manipulate', App\Models\Carehome::where('id',$carehome->id)->get()))
+                                            <a href="{{ route('carehomes.edit', $carehome->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">{{ __('Edit') }}</a>
                                             <form class="inline-block" action="{{ route('carehomes.destroy', $carehome->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
                                             </form>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mt-10">
+                        <div class="mt-10 w-full bg-white px-5 py-2 rounded">
                             {{ $carehomes->onEachSide(1)->links() }}
                         </div>
                     </div>

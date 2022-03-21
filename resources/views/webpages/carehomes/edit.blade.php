@@ -16,46 +16,48 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('users.update', $user->id) }}">
+                <form method="post" action="{{ route('carehomes.update', $carehome->id) }}">
                     @csrf
                     @method('put')
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="name" class="block font-medium text-sm text-gray-700">{{ __('Name') }}</label>
                             <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ old('name', $user->name) }}" />
+                                   value="{{ old('name', $carehome->name) }}" />
                             @error('name')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="email" class="block font-medium text-sm text-gray-700">{{ __('Email') }}</label>
-                            <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                   value="{{ old('email', $user->email) }}" />
-                            @error('email')
+                            <label for="residents" class="block font-medium text-sm text-gray-700">{{ __('Total Residents') }}</label>
+                            <input type="number" name="residents" id="residents" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                                   value="{{ old('residents', $carehome->total_patients) }}" />
+                            @error('residents')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="password" class="block font-medium text-sm text-gray-700">{{ __('Password') }}</label>
-                            <input type="password" name="password" id="password" class="form-input rounded-md shadow-sm mt-1 block w-full" />
-                            @error('password')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="roles" class="block font-medium text-sm text-gray-700">{{ __('Roles') }}</label>
-                            <select name="roles[]" id="roles" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full" multiple="multiple">
-                                @foreach($roles as $id => $role)
-                                    <option value="{{ $id }}"{{ in_array($id, old('roles', $user->roles->pluck('id')->toArray())) ? ' selected' : '' }}>
-                                        {{ $role }}
-                                    </option>
+                            <label for="status" class="block font-medium text-sm text-gray-700">{{ __('Current Status') }}</label>
+                            <select name="status" id="status" class="block rounded-md shadow-sm mt-1 block w-full" >
+                                @foreach($status as $id => $s)
+                                    <option value="{{ $id }}"{{ $id == old('status', $carehome->status->id) ? ' selected' : '' }}>{{ $s }}</option>
                                 @endforeach
                             </select>
-                            @error('roles')
+                            @error('status')
+                                <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="week" class="block font-medium text-sm text-gray-700">{{ __('Week') }}</label>
+                            <select name="week" id="week" class="block rounded-md shadow-sm mt-1 block w-full">
+                                @for($id = 1;  $id <= 4; $id++)
+                                    <option value="{{ $id }}"{{ $id == old('week', $carehome->week) ? ' selected' : '' }}>{{ __('Week ')}} {{ $id }}</option>
+                                @endfor
+                            </select>
+                            @error('week')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -65,7 +67,7 @@
                                 {{ __('Edit') }}
                             </button>
                             <div class="inline-flex items-center">
-                                <a href="{{ route('users.index') }}" class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded">{{ __('Back to list') }}</a>
+                                <a href="{{ route('carehomes.index') }}" class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>

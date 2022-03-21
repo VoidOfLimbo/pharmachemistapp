@@ -13,7 +13,7 @@ class UpdateCarehomeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->user()->can('update', $this->carehome);
     }
 
     /**
@@ -24,7 +24,19 @@ class UpdateCarehomeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'    => [
+                'string',
+                'required',
+            ],
+            'status_id'   => [
+                'required|exists:statuses,id',
+            ],
+            'total_patients' => [
+                'required|integer',
+            ],
+            'week'   => [
+                'required',
+            ],
         ];
     }
 }

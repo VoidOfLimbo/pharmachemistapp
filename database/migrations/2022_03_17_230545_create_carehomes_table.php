@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('carehomes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('status_id')->references('id')->on('statuses');
+            $table->foreignId('status_id')->references('id')->on('statuses')->cascadeOnDelete();
             $table->integer('total_patients');
             $table->integer('week');
             $table->timestamps();

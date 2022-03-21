@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Carehome;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCarehomeRequest extends FormRequest
@@ -13,7 +14,8 @@ class StoreCarehomeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // dd($this);
+        return $this->user()->can('create', Carehome::class);
     }
 
     /**
@@ -24,7 +26,27 @@ class StoreCarehomeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'    => [
+                'string',
+                'required',
+            ],
+            'status_id.*' =>[
+                'required',
+                'array',
+            ],
+            'status_id'   => [
+                'exists:statuses,id',
+            ],
+            'total_patients' => [
+                'required|integer',
+            ],
+            'week.*'   => [
+                'required',
+                'array',
+            ],
+            // 'week'   => [
+            //     'integer',
+            // ],
         ];
     }
 }

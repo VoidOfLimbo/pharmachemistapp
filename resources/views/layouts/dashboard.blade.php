@@ -39,11 +39,11 @@
             <x-navigation.sidenav />
 
             {{-- body --}}
-            <div class="md:ml-64 w-full">
+            <div class="md:ml-64 w-full bg-slate-800">
 
                 {{-- if there is header put it here --}}
                 @if (isset($header))
-                    <header class="bg-white shadow">
+                    <header class="bg-white shadow fixed w-full bg-slate-700 text-white z-40">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 
                             {{-- actual header items can be different in different childrens --}}
@@ -53,18 +53,14 @@
                 @endif
 
                 <!-- rest of the page Content -->
-                {{ $slot }}
+                <main class="relative pt-20 bg-slate-800 min-h-screen h-full">
+                    {{ $slot }}
+                </main>
             </div>
         </div>
     </div>
 
-    {{-- scripts for including highcharts --}}
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 
     {{-- stack models sent by implementing child pages --}}
     @stack('modals')
