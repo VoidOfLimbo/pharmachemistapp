@@ -13,11 +13,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    {{-- This is tailwing css --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+    {{-- This is livewire css --}}
     @livewireStyles
 
+    {{-- custom css to override above css goes here --}}
+    @if (isset($styles))
+        {{ $styles }}
+    @endif
+
     <!-- Scripts -->
+    {{-- This is essential js including tailwind that needs to load before contents --}}
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
@@ -25,17 +33,17 @@
     {{-- will be useful to display messages attached with session if requested by client --}}
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen">
         <div class="flex flex-no-wrap h-full">
             <!-- Nav Bar -->
             <x-navigation.sidenav />
 
-            {{-- body  --}}
-            <div class="md:ml-64 w-full">
+            {{-- body --}}
+            <div class="md:ml-64 w-full bg-slate-800">
 
                 {{-- if there is header put it here --}}
                 @if (isset($header))
-                    <header class="bg-white shadow">
+                    <header class="bg-white shadow fixed w-full bg-slate-700 text-white z-40">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 
                             {{-- actual header items can be different in different childrens --}}
@@ -45,17 +53,24 @@
                 @endif
 
                 <!-- rest of the page Content -->
-                {{ $slot }}
+                <main class="relative pt-20 bg-slate-800 min-h-screen h-full">
+                    {{ $slot }}
+                </main>
             </div>
         </div>
     </div>
 
-    {{-- stack models sent by implementing child pages  --}}
+
+
+    {{-- stack models sent by implementing child pages --}}
     @stack('modals')
 
-    {{-- our local script for navigation in dashboard layout --}}
+    {{-- necessary javascript for navbar in dashboard layout --}}
     <script src="{{ asset('/js/dashboard.js') }}"></script>
 
+    @if (isset($script))
+        {{ $script }}
+    @endif
     {{-- inserting necessary laravel livewire scripts --}}
     @livewireScripts
 

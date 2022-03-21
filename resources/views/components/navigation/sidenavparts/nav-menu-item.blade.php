@@ -1,8 +1,8 @@
 {{-- generic format for menu item --}}
-<li class="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
+<li class="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mt-6">
     {{-- need to put the links here --}}
     <x-jet-nav-link :attributes="$attributes"
-        class="flex w-full items-center focus:outline-none focus:ring-2 focus:ring-white">
+        class="flex w-full items-center">
 
         {{-- if there is svg icon path will be passed --}}
         @if (isset($svgpath))

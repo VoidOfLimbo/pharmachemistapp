@@ -59,24 +59,41 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    // public function __construct(array $attributes = [])
+    // {
+    //     parent::__construct($attributes);
+    //     self::created(function (User $user) {
+    //         if (!$user->roles()->get()->contains(ROLE::DEFAULT_ROLE)) {
+    //             $user->roles()->attach(ROLE::DEFAULT_ROLE);
+    //         }
+    //     });
+    // }
+
     public function roles()
     {
         // A user can have multiple roles
-        return $this->belongsToMany(Role::class)->as("relation");
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-      /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        // attach default role to the user when created
-        static::created(function ($user) {
-            if (!$user->roles()->get()->contains(2)) {
-                $user->roles()->attach(2);
-            }
-        });
-    }
+    //   /**
+    //  * The "booted" method of the model.
+    //  *
+    //  * @return void
+    //  */
+    // protected static function booted()
+    // {
+    //     parent::boot();
+    //     // attach default role to the user when created for registered users
+    //     static::created(function ($user)
+    //     {
+
+    //         // if user uses register form they will not have any role and when seeding dev we don`t want to give it guest role
+    //         if (!$user->roles()->get()->contains(ROLE::DEFAULT_ROLE)) {
+    //             // if it does not then add the default role to the user
+    //             if($user->roles()->get()->contains(ROLE::SUPER_ADMIN)){
+    //                 $user->roles()->attach(ROLE::DEFAULT_ROLE);
+    //             }
+    //         }
+    //     });
+    // }
 }
