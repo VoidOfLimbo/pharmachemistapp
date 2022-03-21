@@ -1,3 +1,20 @@
+# You need to have set-up laravel environment and installed all the dependencies
+I am working on windows 10 and I have installed XAAMP(php and sql), laravel, composer, node.js and tw-elements 
+
+After setting up environment you can follow following steps to install this application in your device:
+1. Clone this project
+2. Go to the folder application using cd command on your cmd or terminal
+3. Run composer install on your cmd or terminal
+4. Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu
+5. Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
+6. Run php artisan key:generate
+7. Run php artisan migrate:fresh --seed
+8. Run php artisan serve
+9. Go to http://localhost:8000/ in web browser (I use XAAMP for localhosting and accessing database)
+10. The database can be accessed from http://localhost/phpmyadmin/
+
+## Laravel generated default readme section below
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
